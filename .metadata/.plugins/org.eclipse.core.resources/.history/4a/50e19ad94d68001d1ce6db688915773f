@@ -1,0 +1,40 @@
+package br.edu.infnet.pedido.modelo.persistencia;
+
+import java.util.List;
+
+import br.edu.infnet.pedido.modelo.entidades.Hospede;
+import br.edu.infnet.pedido.modelo.entidades.Produto;
+
+public class ProdutoDAO extends JdbcDAO<Produto> {
+
+	@Override
+	public Boolean salvar(Produto obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean atualizar(Produto obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean deletar(Produto obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Produto> listarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Hospede obter(Long codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

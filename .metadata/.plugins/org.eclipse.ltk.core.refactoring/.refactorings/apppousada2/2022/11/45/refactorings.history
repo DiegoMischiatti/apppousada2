@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ClienteDAOTest.java&apos; to &apos;pedido/src/test/java/br.edu.infnet.pedido.modelo.persistencia&apos;&#x0D;&#x0A;- Original project: &apos;pedido&apos;&#x0D;&#x0A;- Destination element: &apos;pedido/src/test/java/br.edu.infnet.pedido.modelo.persistencia&apos;&#x0D;&#x0A;- Original element: &apos;br.edu.infnet.pedido.modelo.persistencia.ClienteDAOTest.java&apos;" description="Copy compilation unit" destination="/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;br.edu.infnet.pedido.modelo.persistencia" element1="/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;br.edu.infnet.pedido.modelo.persistencia{ClienteDAOTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1667285207776" units="1" version="1.0"/>
+</session>

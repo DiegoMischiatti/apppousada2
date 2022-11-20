@@ -1,0 +1,114 @@
+package br.edu.infnet.pedido.modelo.persistencia;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.cj.protocol.Resultset;
+
+import br.edu.infnet.pedido.modelo.persistencia.JdbcUtil;
+import br.edu.infnet.pedido.modelo.entidades.Hospede;
+
+public class HospedeDAO extends JdbcDAO <Hospede>{
+
+	public HospedeDAO() {
+		
+	}
+	
+	
+	@Override
+	public Boolean salvar(Hospede cliente) {
+		String sql = "insert into cliente(nome, codigo) values (?,null)";
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, cliente.getNome()); 
+			return pstm.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	@Override
+	public Boolean atualizar(Hospede cliente) {
+		String sql = "update cliente set nome = ? where codigo = ?";
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, cliente.getNome());
+			pstm.setLong(2, cliente.getCodigo()); 
+			return pstm.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
+	
+	@Override
+	public Boolean deletar(Hospede cliente) {
+		String sql = "delete from cliente where codigo = ?";
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setLong(1, cliente.getCodigo()); 
+			return pstm.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	@Override
+	public List<Hospede> listarTodos(){
+		String sql = "select * from cliente";
+		List<Hospede> clientes = new ArrayList<>();
+		try {
+			stm = con.createStatement();
+			rs = stm.executeQuery(sql);
+			
+			while(rs.next()) {
+				String nome = rs.getString("nome");
+				Long codigo = rs.getLong("codigo");
+				Hospede cliente = new Hospede(nome, codigo);
+				clientes.add(cliente);
+			}
+			return clientes;
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	
+	@Override
+	public Hospede obter(Long codigo){
+		String sql = "select * from cliente where codigo = ?";
+		Hospede cliente = new Hospede();
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setLong(1, codigo);
+			rs = stm.executeQuery(sql);
+			
+			if(rs.next()) {
+				String nome = rs.getString("nome");
+				Long codigoDB = rs.getLong("codigo");
+				cliente = new Hospede(nome, codigoDB);
+				
+			}
+			return cliente;
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	
+	
+	
+}

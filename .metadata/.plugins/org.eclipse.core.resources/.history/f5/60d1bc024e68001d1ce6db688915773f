@@ -1,0 +1,28 @@
+package br.edu.infnet.pedido.modelo.persistencia;
+
+
+
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import br.edu.infnet.pedido.modelo.entidades.Hospede;
+import br.edu.infnet.pedido.modelo.entidades.Pedido;
+
+public class PedidoDAOTest {
+	
+	
+	
+	@Test
+	public void testListaPedidos() {
+		IDAO pediIdao = new PedidoDAO();
+		
+		List<Pedido> lista = pediIdao.listarTodos();
+		System.out.println(lista);
+		Assert.assertTrue(lista.size() > 0);
+	}
+	
+	
+}

@@ -1,0 +1,76 @@
+package br.edu.infnet.pedido.modelo.persistencia;
+
+
+
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import br.edu.infnet.pedido.modelo.entidades.Hospede;
+
+public class HospedeDAOTest {
+	
+	
+	@Before
+	public void inicializar() {
+		IDAO hospedeDAO = new HospedeDAO();
+		Hospede hospede = new Hospede("JOSE", "M", "12345678901", "jose@teste.com"); 
+		hospedeDAO.salvar(hospede);
+		
+		
+	}
+
+	@Test
+	public void test() {
+		IDAO hospedeDAO = new HospedeDAO();
+		Hospede hospede = new Hospede("JOSE"); 
+		boolean validacao = hospedeDAO.salvar(hospede);
+		Assert.assertTrue(validacao);
+	}
+	
+	@Test
+	public void testUpdate() {
+		IDAO hospedeDAO = new HospedeDAO();
+		List<Hospede> lista = hospedeDAO.listarTodos();
+		
+		
+		Hospede hospede = new Hospede("MARIA", lista.get(0).getId()); 
+		boolean validacao = hospedeDAO.atualizar(hospede);
+		Assert.assertTrue(validacao);
+	}
+	
+	@Test
+	public void testdelete() {
+		IDAO hospedeDAO = new HospedeDAO();
+		
+		List<Hospede> lista = hospedeDAO.listarTodos();
+		
+		
+		Hospede hospede = new Hospede("MARIA", lista.get(0).getId()); 
+		boolean validacao = hospedeDAO.deletar(hospede);
+		Assert.assertTrue(validacao);
+	}
+	
+	@Test
+	public void testListaHospedes() {
+		IDAO hospedeDAO = new HospedeDAO();
+		
+		List<Hospede> lista = hospedeDAO.listarTodos();
+		Assert.assertTrue(lista.size() > 0);
+	}
+	
+	@Test
+	public void testObterHospede() {
+		
+		IDAO hospedeDAO = new HospedeDAO();
+		
+		List<Hospede> lista = hospedeDAO.listarTodos();
+		
+		Hospede hospede = hospedeDAO.obter(lista.get(0).getId());
+		Assert.assertNotNull(hospede);
+	}
+	
+	
+}
